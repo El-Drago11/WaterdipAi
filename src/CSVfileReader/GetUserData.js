@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import { useRef } from 'react';
 
-const GetUserData = () => {
+const GetUserData = ({getFilterData}) => {
   const [data, setData] = useState([]);
   const selectedDate =  useRef();
-  const [filteredData, setFilteredData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     // Fetch the CSV file from the public folder
@@ -16,9 +16,9 @@ const GetUserData = () => {
           header: true,
           skipEmptyLines: true,
           complete: (results) => {
-            console.log('Parsed Results:', results.data);
+            // console.log('Parsed Results:', results.data);
             setData(results.data);
-            setFilteredData(results.data); // Set initial filtered data to the full dataset
+            getFilterData(results.data); // Set initial filtered data to the full dataset
           },
           error: (error) => {
             console.error('Error parsing CSV:', error);
@@ -58,15 +58,15 @@ const GetUserData = () => {
          default: monthName = ""; break;
        }
 
-      console.log("User Input : ",year+'-'+monthName+'-'+day)
+      // console.log("User Input : ",year+'-'+monthName+'-'+day)
 
       const filtered = data.filter(row =>
         row.arrival_date_year == year.trim() && row.arrival_date_month == monthName.trim() && row.arrival_date_day_of_month == day.trim()
       );
 
-      setFilteredData(filtered);
+      getFilterData(filtered);
     } else {
-      setFilteredData(data); // Reset to full data if no date selected
+      getFilterData(data); // Reset to full data if no date selected
     }
   };
 
@@ -74,7 +74,7 @@ const GetUserData = () => {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       const dateValue = selectedDate.current.value
-      console.log("Entred Date : ",dateValue);
+      // console.log("Entred Date : ",dateValue);
       filterDataByDate(dateValue);
     }
   };
@@ -84,7 +84,7 @@ const GetUserData = () => {
       <h1>CSV Data</h1>
       <label>Select Date: </label>
       <input type="date" ref={selectedDate} onKeyDown={handleKeyPress}/>
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>Hotel</th>
@@ -117,7 +117,7 @@ const GetUserData = () => {
             </tr>
           )}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };
