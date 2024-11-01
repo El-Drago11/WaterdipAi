@@ -2,7 +2,12 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 
 const TimeSeriesChart = ({ onFilterData }) => {
-    console.log("Filter data: ", onFilterData);
+    // console.log("Filter data: ", onFilterData);
+
+    // Ensure onFilterData is an array and has data
+    if (!Array.isArray(onFilterData) || onFilterData.length === 0) {
+        return <div style={{'backgroundColor':'#f1f1f1','padding':'10px','borderRadius':'10px','height':'450px','textAlign':'center'}}>Loading data...</div>;
+    }
 
     const timeSeriesData = onFilterData.reduce((acc, record) => {
         //Step1: Ensure two digits
@@ -31,7 +36,7 @@ const TimeSeriesChart = ({ onFilterData }) => {
         return acc;
     }, {});
 
-    console.log("Data for chart: ", timeSeriesData);
+    // console.log("Data for chart: ", timeSeriesData);
 
     // Prepare data for the chart
     const dates = Object.keys(timeSeriesData);
@@ -42,7 +47,6 @@ const TimeSeriesChart = ({ onFilterData }) => {
         chart: {
             type: 'area',
             stacked: false,
-            height: 350,
             zoom: {
                 type: 'x',
                 enabled: true,
@@ -95,7 +99,7 @@ const TimeSeriesChart = ({ onFilterData }) => {
     ];
 
     return (
-        <div id='chart'>
+        <div id='TimeSeriesChart' style={{'backgroundColor':'#f1f1f1','padding':'10px','borderRadius':'10px'}}>
             <Chart options={options} series={series} type="line" height={450} />
         </div>
     );

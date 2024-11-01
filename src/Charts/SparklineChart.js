@@ -2,9 +2,10 @@ import React from 'react';
 import Chart from 'react-apexcharts';
 
 const SparklineChart = ({ onFilterData,chartFor }) => {
+
     // Ensure onFilterData is an array and has data
     if (!Array.isArray(onFilterData) || onFilterData.length === 0) {
-        return <div>Loading data...</div>;
+        return <div  style={{'backgroundColor':'#f1f1f1','padding':'10px','borderRadius':'10px','height':'200px','width':'500px','textAlign':'center'}}>Loading data...</div>;
     }
 
     var TotalNumber = 0;

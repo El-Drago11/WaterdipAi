@@ -3,7 +3,12 @@ import Chart from 'react-apexcharts';
 
 const ColumnChart = ({onFilterData}) => {
 
-    console.log("Filer data : ", onFilterData)
+    // Ensure onFilterData is an array and has data
+    if (!Array.isArray(onFilterData) || onFilterData.length === 0) {
+        return <div style={{'backgroundColor':'#f1f1f1','padding':'10px','borderRadius':'10px','height':'450px','textAlign':'center'}}>Loading data...</div>;
+    }
+
+    // console.log("Filer data : ", onFilterData)
 
     const countryVisitorCounts = onFilterData.reduce((acc, record) => {
 
@@ -27,7 +32,7 @@ const ColumnChart = ({onFilterData}) => {
         return acc;
     }, {});
 
-    console.log("Data for chart : ",countryVisitorCounts)
+    // console.log("Data for chart : ",countryVisitorCounts)
 
     //Will give the array of the keys present in the object
     const countries = Object.keys(countryVisitorCounts);
@@ -76,7 +81,7 @@ const ColumnChart = ({onFilterData}) => {
 
 
     return (
-        <div id='chart'>
+        <div id='columnChart' style={{'backgroundColor':'#f1f1f1','padding':'10px','borderRadius':'10px'}}>
             <Chart options={options} series={series} type="bar" height={450} />
         </div>
     );

@@ -81,43 +81,8 @@ const GetUserData = ({getFilterData}) => {
 
   return (
     <div>
-      <h1>CSV Data</h1>
-      <label>Select Date: </label>
-      <input type="date" ref={selectedDate} onKeyDown={handleKeyPress}/>
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Hotel</th>
-            <th>Arrival Year</th>
-            <th>Arrival Month</th>
-            <th>Arrival Day</th>
-            <th>Adults</th>
-            <th>Children</th>
-            <th>Babies</th>
-            <th>Country</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.length > 0 ? (
-            filteredData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.hotel}</td>
-                <td>{item.arrival_date_year}</td>
-                <td>{item.arrival_date_month}</td>
-                <td>{item.arrival_date_day_of_month}</td>
-                <td>{item.adults}</td>
-                <td>{item.children}</td>
-                <td>{item.babies}</td>
-                <td>{item.country}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="8">No data available for the selected date.</td>
-            </tr>
-          )}
-        </tbody>
-      </table> */}
+      <label style={{'fontSize':'20px'}}><b>Select Date:</b> </label>
+      <input type="date" ref={selectedDate} onKeyDown={handleKeyPress} style={{'padding':'10px','borderRadius':'10px'}}/>
     </div>
   );
 };
