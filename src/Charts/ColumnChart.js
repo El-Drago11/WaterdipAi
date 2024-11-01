@@ -48,8 +48,7 @@ const ColumnChart = ({onFilterData}) => {
             },
         },
         dataLabels: {
-            enabled: true,
-            formatter: (val) => val.toLocaleString(), // Format numbers with commas
+            enabled: false,
         },
         xaxis: {
             categories: countries,
