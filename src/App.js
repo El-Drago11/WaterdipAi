@@ -11,7 +11,7 @@ const App = () => {
     <div style={{padding:'10px'}}>
       <div style={{ 'display': 'flex', 'flexDirection': 'column', 'gap': '20px' }}>
         <GetUserData getFilterData={setFilteredData} />
-        <div style={{ 'display': 'flex', 'justifyContent': 'space-evenly' }}>
+        <div style={{ 'display': 'flex', 'justifyContent': 'space-evenly','flexWrap':'wrap' }}>
           {/* For Adult= 1 and Children=2 */}
           <SparklineChart onFilterData={filterData} chartFor={1} />
           <SparklineChart onFilterData={filterData} chartFor={2} />
