@@ -8,9 +8,10 @@ const App = () => {
   const [filterData, setFilteredData] = useState([]);
 
   return (
-    <div style={{padding:'10px'}}>
+    <div style={{'padding':'10px'}}>
+      <h1 style={{'textAlign':'center','color':'black','textTransform':'uppercase'}}>Hotel Booking <GetUserData getFilterData={setFilteredData} /></h1>
       <div style={{ 'display': 'flex', 'flexDirection': 'column', 'gap': '20px' }}>
-        <GetUserData getFilterData={setFilteredData} />
+        
         <div style={{ 'display': 'flex', 'justifyContent': 'space-evenly','flexWrap':'wrap' }}>
           {/* For Adult= 1 and Children=2 */}
           <SparklineChart onFilterData={filterData} chartFor={1} />
